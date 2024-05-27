@@ -1,0 +1,55 @@
+/* admin_dashboard.css */
+
+/* Base styling */
+* {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 350;
+}
+.top-container h1{
+    text-align: center;
+}
+
+/* Form styling for note editing */
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    max-width: 600px; /* Set a max-width to limit the form's width */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form label {
+    margin-top: 10px;
+    font-weight: 400;
+}
+
+form input[type="text"],
+form textarea {
+    width: 100%;
+    max-width: 600px; /* Ensure inputs and textarea don't exceed this width */
+    padding: 10px;
+    margin-top: 5px;
+    margin-right: 10px;
+    box-sizing: border-box;
+}
+
+form button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+textarea {
+    resize: none;
+    width: 100%; /* Use 100% to fill the container */
+    max-width: 600px; /* Ensure it doesn't exceed the form's max width */
+    height: 150px;
+}
