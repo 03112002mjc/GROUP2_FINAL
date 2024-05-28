@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     const viewNotesLinks = document.querySelectorAll('.view-notes-link');
     
@@ -39,7 +40,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             <td>${note.created_at}</td>
                             <td>
                                 <a href="../note/edit_note.php?id=${note.id}">Edit</a>
-                                <a href="../../view/note/delete_note.php?id=${note.id}" onclick="return confirm('Are you sure?')">Delete</a>
+                                <form action="../../view/note/delete_note.php" method="post" style="display:inline;">
+                                    <input type="hidden" name="note_id" value="${note.id}">
+                                    <input type="hidden" name="dashboard" value="admin">
+                                    <button type="submit" onclick="return confirm('Are you sure you want to delete this note?');">Delete</button>
+                                </form>
                             </td>
                         `;
                         notesTable.appendChild(row);
@@ -56,3 +61,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+

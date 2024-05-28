@@ -43,16 +43,13 @@ $conn->close();
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/4a9d01e598.js" crossorigin="anonymous"></script>
-    
 </head>
 <body>
 <header>
     <div class="header-container">
-           
-            <h1 class="logo"><i class="fa-solid fa-book-open"></i> My Notebook</h1>
-        
+        <h1 class="logo"><i class="fa-solid fa-book-open"></i> My Notebook</h1>
         <div class="user-info">
-        <i class="fa-solid fa-circle-user" id="user-circle"></i>
+            <i class="fa-solid fa-circle-user" id="user-circle"></i>
             <span class="username"> <?php echo htmlspecialchars($name); ?></span>
             <div class="dropdown">
                 <button class="dropbtn"><i class="fa-solid fa-caret-down"></i></button>
@@ -70,48 +67,47 @@ $conn->close();
             <h1><i class="fa-solid fa-pencil"></i> Notes</h1>
         </div>
         <div class="note-form-container">
-        <form method="post" action="../note/add_note.php" class="note-form" id="note-form" enctype="multipart/form-data">
-            <input type="hidden" id="note-id" name="note_id">
-            <h1>Add Note</h1>
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" required>
-            <br>
-            <label for="content">Content:</label>
-            <textarea id="content" name="content" required></textarea>
-            <br>
-            <button type="submit" id="note-button"><i class="fas fa-circle-plus"></i> Note</button><br>
-            <label for="file">Upload File:</label>
-            <input type="file" id="file" name="file">
-            <br>
-            
-        </form>
-
+            <form method="post" action="../note/add_note.php" class="note-form" id="note-form" enctype="multipart/form-data">
+                <input type="hidden" id="note-id" name="note_id">
+                <h1>Add Note</h1>
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+                <br>
+                <label for="content">Content:</label>
+                <textarea id="content" name="content" required></textarea>
+                <br>
+                <button type="submit" id="note-button"><i class="fas fa-circle-plus"></i> Note</button><br>
+                <label for="file">Upload File:</label>
+                <input type="file" id="file" name="file">
+                <br>
+            </form>
         </div>
         <div class="notes-container">
             <h1>Notes Details</h1>
             <div class="notes" id="myNotes">
-            <?php if (!empty($notes)): ?>
-                <?php foreach ($notes as $note): ?>
-                    <div class="note" id="note-<?php echo $note['id']; ?>">
-                        <h2><?php echo htmlspecialchars($note['title']); ?></h2>
-                        <small><?php echo htmlspecialchars($note['created_at']); ?></small><br>
-                        <?php if (isset($note['file_path']) && !empty($note['file_path'])): ?>
-                            <a href="<?php echo htmlspecialchars($note['file_path']); ?>" download>Download Attachment</a>
-                        <?php endif; ?>
-                        <div class="note-buttons">
-                            <button onclick="viewNote(<?php echo $note['id']; ?>)" class="icon-button"><i class="fa-solid fa-eye"></i></button>
-                            <button type="button" class="icon-button edit-button" data-id="<?php echo $note['id']; ?>" data-title="<?php echo htmlspecialchars($note['title']); ?>" data-content="<?php echo htmlspecialchars($note['content']); ?>"><i class="fa-solid fa-edit"></i></button>
-                            <form action="../note/delete_note.php" method="post" style="display:inline;">
-                                <input type="hidden" name="note_id" value="<?php echo $note['id']; ?>">
-                                <button type="submit" onclick="return confirm('Are you sure you want to delete this note?');" class="icon-button"><i class="fa-solid fa-trash"></i></button>
-                            </form>
-                            <a href="../note/download_note.php?note_id=<?php echo $note['id']; ?>" class="icon-button"><i class="fa-solid fa-cloud-arrow-down"></i> Download</a>
+                <?php if (!empty($notes)): ?>
+                    <?php foreach ($notes as $note): ?>
+                        <div class="note" id="note-<?php echo $note['id']; ?>">
+                            <h2><?php echo htmlspecialchars($note['title']); ?></h2>
+                            <small><?php echo htmlspecialchars($note['created_at']); ?></small><br>
+                            <?php if (isset($note['file_path']) && !empty($note['file_path'])): ?>
+                                <a href="<?php echo htmlspecialchars($note['file_path']); ?>" download>Download Attachment</a>
+                            <?php endif; ?>
+                            <div class="note-buttons">
+                                <button onclick="viewNote(<?php echo $note['id']; ?>)" class="icon-button"><i class="fa-solid fa-eye"></i></button>
+                                <button type="button" class="icon-button edit-button" data-id="<?php echo $note['id']; ?>" data-title="<?php echo htmlspecialchars($note['title']); ?>" data-content="<?php echo htmlspecialchars($note['content']); ?>"><i class="fa-solid fa-edit"></i></button>
+                                <form action="../note/delete_note.php" method="post" style="display:inline;">
+                                    <input type="hidden" name="note_id" value="<?php echo $note['id']; ?>">
+                                    <input type="hidden" name="dashboard" value="user">
+                                    <button type="submit" onclick="return confirm('Are you sure you want to delete this note?');" class="icon-button"><i class="fa-solid fa-trash"></i></button>
+                                </form>
+                                <a href="../note/download_note.php?note_id=<?php echo $note['id']; ?>" class="icon-button"><i class="fa-solid fa-cloud-arrow-down"></i> Download</a>
+                            </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p>No notes found. Create your first note here!</p>
-            <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>No notes found. Create your first note here!</p>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -124,4 +120,3 @@ $conn->close();
 <script src="../../public/js/dashboard.js"></script>
 </body>
 </html>
-
