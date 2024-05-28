@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     const viewNotesLinks = document.querySelectorAll('.view-notes-link');
     
@@ -39,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <td>${note.content}</td>
                             <td>${note.created_at}</td>
                             <td>
-                                <a href="../note/edit_note.php?id=${note.id}">Edit</a>
+                                <button type="button" class="edit-button" data-id="${note.id}">Edit</button>
                                 <form action="../../view/note/delete_note.php" method="post" style="display:inline;">
                                     <input type="hidden" name="note_id" value="${note.id}">
                                     <input type="hidden" name="dashboard" value="admin">
@@ -57,8 +56,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     row.appendChild(cell);
                     notesTable.appendChild(row);
                 }
+
+                const editButtons = document.querySelectorAll('.edit-button');
+                editButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const noteId = this.getAttribute('data-id');
+                        window.location.href = `../note/edit_note.php?id=${noteId}`;
+                    });
+                });
             });
         });
     });
 });
-
