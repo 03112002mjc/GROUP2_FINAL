@@ -47,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <title>Create New User</title>
     <script src="https://kit.fontawesome.com/4a9d01e598.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../public/css/admin_dashboard.css">
     <link rel="stylesheet" href="../../public/css/create-user.css">
@@ -99,7 +100,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <option value="admin">Admin</option>
         </select><br>
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
+        <div class="pass-container">
+            <input type="password" id="password" name="password" oninput="toggleEyeIcon()" placeholder="Password" required>
+            <i id="eyeIcon" class="fas fa-eye" style="display: none;" onclick="togglePasswordVisibility()"></i>
+        </div>
         <button type="submit">Create User</button>
         <a href="../admin/admin_dashboard.php" class="button">Back to Dashboard</a>
     </form>
@@ -110,5 +114,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <small>&copy; 2024 | Notebook by <a href="github.com">Group2</a><br> WebDev</small>
     </p>
 </footer>
+<script src="../../public/js/login.js"></script>
 </body>
 </html>

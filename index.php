@@ -65,10 +65,14 @@ $conn->close();
 </head>
 <body class="body-container">
 <div class="header-container">
+   
     <h1>My Notebook</h1>
 </div>
 
 <div class="container login-container">
+    <div class="logo">
+        <img src="public/img/CITE.png" alt="">
+    </div>
     <h3>Login to continue</h3>
     <div class="error-container">
         <?php

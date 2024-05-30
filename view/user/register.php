@@ -49,6 +49,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 <div class="register-container">
+<div class="logo">
+        <img src="../../public/img/CITE.png" alt="">
+    </div>
     <h1>Register</h1>
     <p id="fill-up">Fill the following Form</p>
     <?php if ($error_message): ?>
@@ -82,6 +85,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <small>&copy; 2024 | Notebook by <a href="github.com"><small>Group2</small></a><br> WebDev</small>
     </p>
 </footer>
-<script src="js/register.js"></script>
+<script src="../../public/js/login.js"></script>
 </body>
 </html>

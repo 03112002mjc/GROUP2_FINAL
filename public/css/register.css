@@ -2,12 +2,13 @@
     font-family: "Source sans 3", serif;
     font-weight: 320;
 } 
-body{
-    background-image: url(../img/image.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
+body {
+    /*background: linear-gradient(135deg, #333, #fff, #333);*/
+    background: #fff;
+    
+    
+    align-items: center;
+    justify-content: center;
 }
 .register-container {
     max-width: 400px;
@@ -57,13 +58,13 @@ body{
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #333;
+    background-color: #25313E;
     color: #fff;
     cursor: pointer;
 }
 
 .register-container button:hover{
-    background-color: #202020;
+    background-color: #1a232c;
 }
 .register-container2 {
     max-width: 400px;
@@ -90,16 +91,18 @@ body{
     text-decoration: underline;
 }
 
-footer{
+footer {
     display: flex;
     justify-content: center;
     text-align: center;
-    color: #fff;
+    margin-top: 10px;
+    
 }
-.footer a{
-    color: #fff;
+footer a{
+    color: #000000;
+    text-decoration: none;
 }
-footer a:hover{
+footer a:hover {
     color: #0213ff;
     text-decoration: underline;
 }
@@ -135,4 +138,11 @@ footer a:hover{
     cursor: pointer;
     color: #6a6a6a;
     font-size: 14px;
+}
+.logo{
+    display: flex;
+    justify-content: center;
+}
+.logo img{
+    width: 70px;
 }

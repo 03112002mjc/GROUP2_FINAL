@@ -58,10 +58,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <title>Setup Admin</title>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="../../public/css/register.css">
 </head>
 <body>
 <div class="register-container">
+    <div class="logo">
+        <img src="../../public/img/CITE.png" alt="">
+    </div>
     <h1>Setup Admin</h1>
     <div class="error-container">
         <?php
@@ -84,6 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="password" id="password" name="password" oninput="toggleEyeIcon()" placeholder="Password" required>
             <i id="eyeIcon" class="fas fa-eye" style="display: none;" onclick="togglePasswordVisibility()"></i>
         </div>
+        
         <br>
         <button type="submit">Register</button>
     </form>
@@ -93,6 +98,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <small>&copy; 2024 | Notebook by <a href="github.com">Group2</a><br> WebDev</small>
     </p>
 </footer>
-<script src="../../public/js/register.js"></script>
+<script src="../../public/js/login.js"></script>
 </body>
 </html>

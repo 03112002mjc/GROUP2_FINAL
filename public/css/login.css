@@ -23,6 +23,7 @@ body {
     margin: 0;
     border: none;
     font-weight: 500;  
+    display: flex;
 }
 
 .header-container h1{
@@ -161,4 +162,13 @@ footer a:hover {
     color: #6a6a6a;
     font-size: 14px;
 }
+.logo{
+    display: flex;
+    justify-content: center;
+}
+.logo img{
+    width: 70px;
+    margin-top: 10px;
+}
+
 
