@@ -1,4 +1,8 @@
+-- Create Database
+CREATE DATABASE IF NOT EXISTS notebook;
 
+-- Use the created database
+USE notebook;
 
 -- Table: users
 CREATE TABLE IF NOT EXISTS users (
