@@ -147,6 +147,7 @@ header {
     max-height: 80vh; /* Set maximum height */
     overflow-y: auto; /* Enable vertical scrolling */
     border-bottom: 1px solid #ccc;
+    
 }
 
 .notes-container h1{

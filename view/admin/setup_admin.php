@@ -90,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         
         <br>
-        <button type="submit">Register</button>
+        <button type="submit">Create Admin</button>
     </form>
 </div>
 <footer id="footer">

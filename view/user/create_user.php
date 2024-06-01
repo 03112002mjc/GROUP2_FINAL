@@ -9,6 +9,25 @@ checkRole('admin');
 $error_message = '';
 $success_message = '';
 
+// Fetch roles for the dropdown
+$sql_roles = "SELECT DISTINCT role FROM users";
+$result_roles = $conn->query($sql_roles);
+
+// Fetch selected role from the dropdown
+$selected_role = isset($_GET['role']) ? $_GET['role'] : '';
+
+// Get the user ID from the session
+$user_id = $_SESSION['user_id'];
+
+// Fetch the admin's name
+$sql = "SELECT name FROM users WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$stmt->bind_result($name);
+$stmt->fetch();
+$stmt->close();
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -60,6 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <div class="user-info">
                 <i class="fas fa-user-circle" id="user-circle"></i>
+                <span class="username"><?php echo htmlspecialchars($name); ?></span>
                 <div class="dropdown">
                 <i class="fa-solid fa-caret-down"></i>
                     <div class="dropdown-content">
@@ -96,7 +116,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <label for="role">Role:</label>
         <select id="role" name="role" required>
             <option value="student">Student</option>
-            <option value="instructor">Instructor</option>
             <option value="admin">Admin</option>
         </select><br>
         <label for="password">Password:</label>

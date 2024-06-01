@@ -20,6 +20,8 @@ function viewNote(noteId) {
 
         // Update the top-container with the note details
         document.getElementById('top-container').innerHTML = `<h1>${data.title}</h1><p>${data.content}</p>`;
+        document.getElementById('top-container').style.textAlign = 'center';
+
     })
     .catch(error => console.error('Error:', error));
 }

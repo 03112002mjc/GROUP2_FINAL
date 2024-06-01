@@ -64,7 +64,9 @@ $conn->close();
 <main>
     <div class="main-content">
         <div class="top-container" id="top-container">
-            <h1><i class="fa-solid fa-pencil"></i> Notes</h1>
+            <div class="h1_container">
+                <h1><i class="fa-solid fa-pencil"></i> Notes</h1>
+            </div>
         </div>
         <div class="note-form-container">
             <form method="post" action="../note/add_note.php" class="note-form" id="note-form" enctype="multipart/form-data">

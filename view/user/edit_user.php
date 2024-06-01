@@ -8,6 +8,25 @@ checkRole('admin');
 
 $errors = [];
 
+ // Fetch roles for the dropdown
+$sql_roles = "SELECT DISTINCT role FROM users";
+$result_roles = $conn->query($sql_roles);
+
+// Fetch selected role from the dropdown
+$selected_role = isset($_GET['role']) ? $_GET['role'] : '';
+
+// Get the user ID from the session
+$user_id = $_SESSION['user_id'];
+
+// Fetch the admin's name
+$sql = "SELECT name FROM users WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$stmt->bind_result($name);
+$stmt->fetch();
+$stmt->close();
+
 // Fetch user details
 if (isset($_GET['id'])) {
     $user_id = $_GET['id'];
@@ -39,6 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $role = $_POST['role'];
+
 
     // Update user
     $update_sql = "UPDATE users SET name = ?, email = ?, role = ? WHERE id = ?";
@@ -76,6 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="user-info">
                 <i class="fas fa-user-circle" id="user-circle"></i>
+                <span class="username"><?php echo htmlspecialchars($name); ?></span>
                 <div class="dropdown">
                 <i class="fa-solid fa-caret-down"></i>
                     <div class="dropdown-content">
@@ -121,7 +142,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label for="role">Role:</label>
                     <select id="role" name="role">
                         <option value="student" <?php echo ($user['role'] === 'student') ? 'selected' : ''; ?>>Student</option>
-                        <option value="instructor" <?php echo ($user['role'] === 'instructor') ? 'selected' : ''; ?>>Instructor</option>
                         <option value="admin" <?php echo ($user['role'] === 'admin') ? 'selected' : ''; ?>>Admin</option>
                     </select>
 

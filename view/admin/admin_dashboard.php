@@ -53,18 +53,25 @@ $result_notes = $conn->query($sql_notes);
 </head>
 <body>
     <header>
+
         <div class="header-container">
             <div class="logo">
                 <i class="fas fa-book"></i> Admin Dashboard
             </div>
+        
             <div class="user-info">
                 <i class="fas fa-user-circle" id="user-circle"></i>
                 <span class="username"><?php echo htmlspecialchars($name); ?></span>
+
                 <div class="dropdown">
-                <i class="fa-solid fa-caret-down"></i>
+
+                    <i class="fa-solid fa-caret-down"></i>
+
                     <div class="dropdown-content">
+
                         <a href="../user/logout.php">Logout</a>
                         <a href="admin_profile.php">Profile</a>
+
                     </div>
                 </div>
             </div>
@@ -73,6 +80,7 @@ $result_notes = $conn->query($sql_notes);
     <main>
         <nav class="side-nav">
             <ul>
+
                 <li><a href="admin_dashboard.php"><i class="fas fa-users"></i> Users</a></li>
                 <li><a href="admin_profile.php"><i class="fas fa-user"></i> Profile</a></li>
                 
@@ -110,7 +118,7 @@ $result_notes = $conn->query($sql_notes);
                         <td><?php echo $row_user['role']; ?></td>
                         <td>
                             <a href="../user/edit_user.php?id=<?php echo $row_user['id']; ?>">Edit</a>
-                            <a href="../user/delete_user.php?id=<?php echo $row_user['id']; ?>" onclick="return confirm('Are you sure?')">Delete</a>
+                            <a href="../user/delete_user.php?id=<?php echo $row_user['id']; ?>" onclick="return confirm('Are you sure to delete this user?')">Delete</a>
                             <a href="#" class="view-notes-link" data-user-id="<?php echo $row_user['id']; ?>">View Notes</a> 
                         </td>
                     </tr>
@@ -146,4 +154,3 @@ if (isset($stmt_users)) {
 }
 $conn->close();
 ?>
-

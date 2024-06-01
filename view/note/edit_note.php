@@ -80,8 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <nav class="side-nav">
             <ul>
                 <li><a href="../admin/admin_dashboard.php"><i class="fas fa-users"></i> Users</a></li>
-                <li><a href="admin_dashboard.php"><i class="fas fa-users"></i> Users</a></li>
-                <li><a href="admin_profile.php"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href="../admin/admin_profile.php"><i class="fas fa-user"></i> Profile</a></li>
             </ul>
         </nav>
         
