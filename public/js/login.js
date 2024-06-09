@@ -1,25 +1,35 @@
-function togglePasswordVisibility() {
-    var passwordInput = document.getElementById("password");
-    var eyeIcon = document.getElementById("eyeIcon");
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        eyeIcon.classList.remove("fa-eye");
-        eyeIcon.classList.add("fa-eye-slash");
-    } else {
-        passwordInput.type = "password";
-        eyeIcon.classList.remove("fa-eye-slash");
-        eyeIcon.classList.add("fa-eye");
+document.addEventListener("DOMContentLoaded", function() {
+    const passwordField = document.getElementById("password");
+    const togglePassword = document.querySelector(".password-toggle-icon i");
+    const toggleIconContainer = document.querySelector(".password-toggle-icon");
+
+    // Function to toggle the visibility of the password
+    function togglePasswordVisibility() {
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            togglePassword.classList.remove("fa-eye");
+            togglePassword.classList.add("fa-eye-slash");
+        } else {
+            passwordField.type = "password";
+            togglePassword.classList.remove("fa-eye-slash");
+            togglePassword.classList.add("fa-eye");
+        }
     }
-}
-function toggleEyeIcon() {
-    var passwordInput = document.getElementById("password");
-    var eyeIcon = document.getElementById("eyeIcon");
-    var showPasswordBtn = document.getElementById("showPasswordBtn");
-    if (passwordInput.value.length > 0) {
-        eyeIcon.style.display = "block";
-        showPasswordBtn.style.display = "block";
-    } else {
-        eyeIcon.style.display = "none";
-        showPasswordBtn.style.display = "none";
+
+    // Function to show or hide the toggle icon based on input value
+    function checkPasswordInput() {
+        if (passwordField.value.length > 0) {
+            toggleIconContainer.style.display = "block";
+        } else {
+            toggleIconContainer.style.display = "none";
+        }
     }
-}
+
+    
+    togglePassword.addEventListener("click", togglePasswordVisibility);
+    passwordField.addEventListener("input", checkPasswordInput);
+
+    
+    checkPasswordInput();
+});
+
