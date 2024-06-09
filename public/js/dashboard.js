@@ -1,5 +1,5 @@
 function viewNote(noteId) {
-    fetch('../note/view_note.php', {
+    fetch('../view/note/view_note.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
             noteButton.innerHTML = '<i class="fas fa-circle-plus"></i> Update Note';
 
             // Change the form action to update_note.php if required
-            form.action = '../../view/note/update_note.php';
+            form.action = '../view/note/update_note.php';
         });
     });
 
@@ -58,4 +58,3 @@ document.addEventListener('DOMContentLoaded', function () {
         window.history.replaceState({}, document.title, newUrl);
     }
 });
-
