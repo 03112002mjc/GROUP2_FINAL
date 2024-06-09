@@ -3,7 +3,7 @@ include '../../config/config.php';
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../../index.php");
+    header("Location: ../index.php");
     exit;
 }
 
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param('ssii', $title, $content, $note_id, $user_id);
 
     if ($stmt->execute()) {
-        header("Location: ../user/dashboard.php?success=1");
+        header("Location: ../student_dashboard.php?success=1");
         exit;
     } else {
         echo "Error updating note: " . $conn->error;
