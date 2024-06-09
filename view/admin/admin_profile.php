@@ -1,10 +1,13 @@
 <?php
 session_start();
-include '../../config/config.php';
-include '../../function.php';
+include '../config/config.php';
 
-// Ensure only admins can access this page
-checkRole('admin');
+
+// Check if user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../index.php");
+    exit();
+}
 
 // Get the user ID from the session
 $user_id = $_SESSION['user_id'];
@@ -22,7 +25,7 @@ $stmt->close();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $new_name = $_POST['name'];
     $new_email = $_POST['email'];
-    $new_password = $_POST['password'] ? password_hash($_POST['password'], PASSWORD_BCRYPT) : null;
+    $new_password = $_POST['password'] ? md5($_POST['password'], PASSWORD_BCRYPT) : null;
 
     if ($new_password) {
         $sql_update = "UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?";
@@ -53,8 +56,8 @@ $conn->close();
     <title>Admin Profile</title>
     <script src="https://kit.fontawesome.com/4a9d01e598.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../public/css/admin_dashboard.css">
-    <link rel="stylesheet" href="../../public/css/admin_profile.css">
+    <link rel="stylesheet" href="../public/css/admin_dashboard.css">
+    <link rel="stylesheet" href="../public/css/admin_profile.css">
 
 </head>
 <body>
@@ -69,7 +72,7 @@ $conn->close();
                 <div class="dropdown">
                 <i class="fa-solid fa-caret-down"></i>
                     <div class="dropdown-content">
-                        <a href="../user/logout.php">Logout</a>
+                        <a href="../controller/UserController.php?action=logout">Logout</a>
                     </div>
                 </div>
             </div>
@@ -79,7 +82,9 @@ $conn->close();
         <nav class="side-nav">
             <ul>
                 <li><a href="admin_dashboard.php"><i class="fas fa-users"></i> Users</a></li>
-                <li><a href="admin_profile.php"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href="../controller/UserController.php?action=createUser"><i class="fas fa-user"></i>Create User</a></li>
+                
+                
                 
             </ul>
         </nav>
@@ -98,8 +103,14 @@ $conn->close();
                     <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($name); ?>" required>
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>" required>
-                    <label for="password">Password (leave blank to keep current):</label>
-                    <input type="password" id="password" name="password">
+                    
+                    <div class="user-box">
+                        <label for="password">Password (leave blank to keep current):</label>
+                        <div class="password-container">
+                            <input type="password" id="password" name="password" placeholder="Password" required />
+                            <span class="password-toggle-icon"><i class="fas fa-eye"></i></span>
+                        </div>
+                    </div><br>
                     <button type="submit">Update Profile</button>
                 </form>
             </div>
@@ -110,5 +121,6 @@ $conn->close();
         <small>&copy; 2024 | Notebook by <a href="github.com">Group2</a><br> WebDev</small>
     </p>
 </footer>
+<script src="../public/js/login.js"></script>
 </body>
 </html>
