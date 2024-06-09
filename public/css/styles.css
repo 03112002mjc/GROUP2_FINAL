@@ -328,6 +328,9 @@ footer a:hover {
     width: 2px;
     background-color: #ccc;
 }
+
+
+
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
     .main-content {
