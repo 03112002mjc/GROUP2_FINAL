@@ -2,6 +2,8 @@
 
 ##### Welcome to the Notebook Web Application project! This is a web application that allows users to create, edit, delete, and view notes. It also includes role-based access control for different types of users (admin, student). The project is built using HTML, CSS, JavaScript, PHP, and MySQL.
 
+### Password of all the users is: password
+
 ## Installation Instructions:
 
 ### Step 1: Downloading/Extracting the file.
