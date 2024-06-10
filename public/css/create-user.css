@@ -98,3 +98,27 @@ color: #4CAF50;
     color: #6a6a6a;
     font-size: 14px;
 }
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-container input[type="password"],
+.password-container input[type="text"] {
+    width: 100%;
+    padding-right: 30px; /* Space for the eye icon */
+}
+
+.password-toggle-icon {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    cursor: pointer;
+    color: #999;
+}
+
+.password-toggle-icon:hover {
+    color: #333;
+}
+
