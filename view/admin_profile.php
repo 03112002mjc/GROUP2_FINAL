@@ -25,7 +25,7 @@ $stmt->close();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $new_name = $_POST['name'];
     $new_email = $_POST['email'];
-    $new_password = $_POST['password'] ? md5($_POST['password'], PASSWORD_BCRYPT) : null;
+    $new_password = $_POST['password'] ? md5($_POST['password']) : null;
 
     if ($new_password) {
         $sql_update = "UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?";
